@@ -36,6 +36,12 @@ def load_data(output_dir='dataset'):
     descr = all_readme[i+1].split()
     in_metadata.append(descr)
 
+  metadatum = namedtuple('metadatum', ['runid', 'OpSimName', 'u', 'g', 'r', 'i', 'z', 'y'])
+
+  metadata = {}
+  for row in in_metadata:
+    metadata[row[0]] = metadatum(*row)
+
   names_z=('ID', 'z_true', 'z_phot', 'dz_phot', 'NN', 'N_train')
   names_phot=('ID', 'z_true',
     'u', 'err_u', 'g', 'err_g', 'r', 'err_r', 'i', 'err_i', 'z', 'err_z', 'y', 'err_y',
