@@ -8,7 +8,7 @@ import tempfile
 import os
 
 data_url="https://storage.googleapis.com/ahw2019/for_malz_and_lanusse.tar.gz"
-colors = ["k", "#2ca02c", "tomato", "cornflowerblue", "plum", "gold"]
+colors = ["k", "plum", "cornflowerblue", "#2ca02c", "gold", "tomato"]
 
 def load_data(output_dir='dataset'):
   """Retrieves opsim data from the internets if not already available locally
