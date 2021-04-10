@@ -15,7 +15,7 @@ def load_data(output_dir='dataset'):
   """
   if not os.path.exists(output_dir):
     # Create a temporary work directory
-    temp_path = tempfile.mktemp()
+    temp_path = tempfile.mkdtemp()
     tar_filename = os.path.join(temp_path, 'archive.tar.gz')
 
     # Download the archive from the cloud
