@@ -73,4 +73,4 @@ def load_data(output_dir='dataset'):
     limmag = metadatum(an_os, os_names[an_os], *limmags)
     z_cats[an_os] = z_cat
 
-  return z_cats, phot_cats, os_names, os_colors
+  return z_cats, phot_cats, available_os, os_names, os_colors
