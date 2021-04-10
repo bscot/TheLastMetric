@@ -56,7 +56,7 @@ def load_data(output_dir='dataset'):
                          format='ascii',
                          names=names_z)
 
-    phot_cat = Table.read(os.path.join(output_dir,one_os+'/test.cat')
+    phot_cat = Table.read(os.path.join(output_dir,one_os+'/test.cat'),
                          format='ascii',
                          names=names_phot)
     phot_cat = Table.from_pandas(phot_cat.to_pandas().dropna())
