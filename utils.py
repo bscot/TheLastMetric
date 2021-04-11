@@ -2,6 +2,7 @@
 from urllib import request
 from collections import namedtuple
 from astropy.table import Table
+import numpy as np
 import shutil
 import tarfile
 import tempfile
