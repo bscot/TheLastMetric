@@ -78,7 +78,7 @@ def load_data(output_dir='dataset'):
   return z_cats, phot_cats, available_os, os_names, os_colors
 
 def compute_last_metric(flow, photometry, redshift,
-                        entropy_nbins=100,
+                        entropy_nbins=120,
                         entropy_range=[0.,3.]):
   """ Computes the last metric given a trained flow and corresponding photometry
   and redshift astropy tables
