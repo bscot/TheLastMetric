@@ -11,3 +11,9 @@ Guide to file names:
 `flow_for_run_runname_mag_trained.pkl` - same as baseline flows, except trained on galaxy magnitudes instead of colors.
 
 `flow_for_run_runname_K=N.pkl` - same as baseline flows, except with varying spline resolution K.
+
+`flow_for_run_runname_zphot|colors.pkl` - K=16 flow modeling p(z_phot|r,colors)
+
+`flow_for_run_runname_zphot|ztrue.pkl` - K=16 flow modeling p(z_phot|z_true)
+
+`flow_for_run_runname_ztrue|zphot.pkl` - K=16 flow modeling p(z_true|z_phot)
