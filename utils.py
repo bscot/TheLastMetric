@@ -6,6 +6,7 @@ import shutil
 import tarfile
 import tempfile
 import os
+import scipy.stats
 
 data_url="https://storage.googleapis.com/ahw2019/for_malz_and_lanusse.tar.gz"
 colors = ["k", "plum", "cornflowerblue", "#2ca02c", "gold", "tomato"]
@@ -74,3 +75,21 @@ def load_data(output_dir='dataset'):
     z_cats[an_os] = z_cat
 
   return z_cats, phot_cats, available_os, os_names, os_colors
+
+def compute_last_metric(flow, photometry, redshift,
+                        entropy_nbins=100,
+                        entropy_range=[0.,3.]):
+  """ Computes the last metric given a trained flow and corresponding photometry
+  and redshift astropy tables
+  """
+  cat = photometry.to_pandas().merge(redshift.to_pandas())
+
+  # Computing the entropy H(z)
+  pz = scipy.stats.rv_histogram(np.histogram(cat['z_true'], bins=entropy_nbins,
+                                range=entropy_range))
+  entropy = pz.entropy()
+
+  # Computing lower bound
+  mutual_information_lower_bound = flow.log_prob(flow.info["condition_scaler"](cat)) + entropy
+
+  return mutual_information_lower_bound
