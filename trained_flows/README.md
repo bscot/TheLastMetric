@@ -1,20 +1,17 @@
-The files in this folder are `pzflow` normalizing flows. They can be loaded via:
+The files in this folder are `pzflow` normalizing flows. The regular `Flow` objects are saved as `pzflow_flow_for_run_...`, while the `FlowEnsemble` objects are saved as `pzflow_ensemble_for_run_...`.
+
+The flows can be loaded via
 ```
 from pzflow import Flow
 flow = Flow(file='file-name.pkl')
 ```
 
-Guide to file names:
+The ensembles can be loaded via
+```
+from pzflow import FlowEnsemble
+ens = FlowEnsemble(file='file-name.pkl')
+```
 
-`flow_for_runName_N.pkl` - baseline flows (with K=16), trained on galaxy colors plus r mag for the designated run. 
-There are 10 independent flows for each (labeled with N=1,...,10) so that mean and scatter be computed for the metric.
+The ensembles all consist of 10 Flows, each with a single RQ-NSC with K=16. The flows are are individual flows, each consisting of a single RQ-NSC with K equal to the number given in the file name.
 
-`flow_for_runName_mag_trained.pkl` - same as baseline flows, except trained on galaxy magnitudes instead of colors.
-
-`flow_for_runName_K=N.pkl` - same as baseline flows, except with varying spline resolution K.
-
-`flow_for_runName_zphot|colors.pkl` - K=16 flow modeling p(z_phot|r,colors)
-
-`flow_for_runName_zphot|ztrue.pkl` - K=16 flow modeling p(z_phot|z_true)
-
-`flow_for_runName_ztrue|zphot.pkl` - K=16 flow modeling p(z_true|z_phot)
+This file also contains pickled dictionaries of the training losses. Loading these dictionaries allows you to access all of these losses without rerunning the training.
